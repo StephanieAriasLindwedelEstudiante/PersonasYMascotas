@@ -24,7 +24,12 @@
                     <td th:text="${persona.email}"></td>
                     <td th:text="${persona.telefono}"></td>
                     <td th:text="${persona.fechaNacimiento}"></td>
+                    <td>
+                        <a th:href="@{/personas/editar/{id}(id=${persona.id})}">Editar</a>
+                        <a th:href="@{/personas/eliminar/{id}(id=${persona.id})}">Eliminar</a>
+                    </td>
                 </tr>
             </tbody>
+            <a th:href="@{/}">Inicio</a>
         </table>
     </body>

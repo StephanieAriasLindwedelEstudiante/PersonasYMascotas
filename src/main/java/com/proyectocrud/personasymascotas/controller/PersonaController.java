@@ -16,34 +16,34 @@ public class PersonaController {
     @Autowired
     private PersonaService personaService;
 
-    @GetMapping("/")
+    @GetMapping("/personas/listap")
     public String ListarPersonas(Model modelo) {
         modelo.addAttribute("personas", personaService.listarPersonas());
-        return "personas/lista";
+        return "personas/listap";
     }
 
-    @GetMapping("/nueva")
+    @GetMapping("/personas/formulariop")
     public String mostrarFormularioDeNuevaPersona(Model modelo) {
         modelo.addAttribute("persona", new Persona());
-        return "personas/formulario";
+        return "personas/formulariop";
     }
 
-    @GetMapping("/editar/{id}")
+    @GetMapping("/personas/editar/{id}")
     public String editarPersona(@PathVariable Long id, Model modelo) {
         modelo.addAttribute("persona", personaService.BuscarPersonaPorId(id));
-        return "formulario";
+        return "personas/formulariop";
     }
 
-    @PostMapping("/guardar")
+    @PostMapping("/personas/guardar")
     public String guardarPersona(Persona persona) {
         personaService.guardarPersona(persona);
-        return "redirect:/";
+        return "redirect:/personas/listap";
     }
 
-    @GetMapping("/eliminar/{id}")
+    @GetMapping("/personas/eliminar/{id}")
     public String eliminarPersona(@PathVariable Long id) {
         personaService.eliminarPersona(id);
-        return "redirect:/";
+        return "redirect:/personas/listap";
     }
 
 }

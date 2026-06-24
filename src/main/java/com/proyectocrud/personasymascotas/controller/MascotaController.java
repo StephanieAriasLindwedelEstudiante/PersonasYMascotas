@@ -16,33 +16,33 @@ public class MascotaController {
     @Autowired
     private MascotaService mascotaService;
 
-    @GetMapping("/")
+    @GetMapping("/mascotas/lista")
     public String ListarMascotas(Model modelo) {
         modelo.addAttribute("mascotas", mascotaService.listarMascotas());
         return "mascotas/lista";
     }
 
-    @GetMapping("/nueva")
+    @GetMapping("/mascotas/formulario")
     public String mostrarFormularioDeNuevaMascota(Model modelo) {
         modelo.addAttribute("mascota", new Mascota());
         return "mascotas/formulario";
     }
 
-    @GetMapping("/editar/{id}")
+    @GetMapping("/mascotas/editar/{id}")
     public String editarMascota(@PathVariable Long id, Model modelo) {
         modelo.addAttribute("mascota", mascotaService.BuscarMascotaPorId(id));
         return "mascotas/formulario";
     }
 
-    @PostMapping("/guardar")
+    @PostMapping("/mascotas/guardar")
     public String guardarMascota(Mascota mascota) {
         mascotaService.guardarMascota(mascota);
-        return "redirect:/";
+        return "redirect:/mascotas/lista";
     }
 
-    @GetMapping("/eliminar/{id}")
+    @GetMapping("/mascotas/eliminar/{id}")
     public String eliminarMascota(@PathVariable Long id) {
         mascotaService.eliminarMascota(id);
-        return "redirect:/";
+        return "redirect:/mascotas/lista";
     }
 }
