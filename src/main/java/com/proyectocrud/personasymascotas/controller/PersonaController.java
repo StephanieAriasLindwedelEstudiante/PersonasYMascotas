@@ -19,13 +19,13 @@ public class PersonaController {
     @GetMapping("/")
     public String ListarPersonas(Model modelo) {
         modelo.addAttribute("personas", personaService.listarPersonas());
-        return "lista";
+        return "personas/lista";
     }
 
     @GetMapping("/nueva")
     public String mostrarFormularioDeNuevaPersona(Model modelo) {
         modelo.addAttribute("persona", new Persona());
-        return "formulario";
+        return "personas/formulario";
     }
 
     @GetMapping("/editar/{id}")

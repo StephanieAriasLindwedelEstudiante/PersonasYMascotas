@@ -19,19 +19,19 @@ public class MascotaController {
     @GetMapping("/")
     public String ListarMascotas(Model modelo) {
         modelo.addAttribute("mascotas", mascotaService.listarMascotas());
-        return "lista";
+        return "mascotas/lista";
     }
 
     @GetMapping("/nueva")
     public String mostrarFormularioDeNuevaMascota(Model modelo) {
         modelo.addAttribute("mascota", new Mascota());
-        return "formulario";
+        return "mascotas/formulario";
     }
 
     @GetMapping("/editar/{id}")
     public String editarMascota(@PathVariable Long id, Model modelo) {
         modelo.addAttribute("mascota", mascotaService.BuscarMascotaPorId(id));
-        return "formulario";
+        return "mascotas/formulario";
     }
 
     @PostMapping("/guardar")
